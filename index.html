@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+          content="Learning to Downsample for Segmentation of Ultra-High Resolution Images">
+    <meta name="author"
+          content="Chen Jin, Ryutaro Tanno, Thomy Mertzanidou, Eleftheria Panagiotaki, Daniel C. Alexander">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+          crossorigin="anonymous">
+    <title>Learning to Downsample for Segmentation of Ultra-High Resolution Images</title>
+    <style>
+      h2 {
+        text-align: center;
+      }
+      .paper-title {
+        margin-top: 2em;
+        margin-bottom: 2em;
+      }
+      .authors-list .name {
+        font-size: 1.2em;
+        margin-bottom: 0.5em;
+      }
+      .paper-link a {
+        font-size: 1em;
+      }
+      .neg-space {
+        margin-top: -1.3em;
+      }
+      .teaser-video::before {
+        padding-top: 15%;
+      }
+	  .teaser-video {
+        padding-left: 5%;
+        padding-right: 5%;
+        margin-bottom: 2em;
+      }
+      .sketchy-video::before {
+        padding-top: 70%;
+      }
+      .cater-video::before {
+        padding-top: 22%;
+      }
+      .movi-video::before {
+        padding-top: 15%;
+      }
+      .content-block {
+        padding-left: .5em;
+        padding-right: .5em;
+        padding-bottom: 2em;
+      }
+      .citation .description {
+        font-family: "Courier", monospace;
+        font-size: 16px;
+        white-space: pre;
+        text-align: left;
+        padding-left: 10%;
+      }
+      .footnote {
+        background-color: #e9ecef;
+        padding-top: 1em;
+        padding-bottom: 1em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="jumbotron jumbotron-fluid overflow-auto">
+
+      <!-- Title -->
+      <div class="paper-title">
+        <h1 class="name text-center">Learning to Downsample for Segmentation of Ultra-High Resolution Images</h1>
+      </div>
+
+      <!-- Authors -->
+      <div class="authors-list">
+        <p class="name text-center">
+          <a href="https://lxasqjc.github.io/" target="_blank">Chen Jin</a><sup>1</sup>,
+          <a href="https://rt416.github.io/" target="_blank">Ryutaro Tanno</a><sup>1,2</sup>,
+          <a href="http://www0.cs.ucl.ac.uk/staff/T.Mertzanidou/" target="_blank">Thomy Mertzanidou</a><sup>1</sup>,
+          <a href="https://epanagiotaki.wordpress.com/" target="_blank">Eleftheria Panagiotaki</a><sup>1</sup>,
+          <a href="http://www0.cs.ucl.ac.uk/staff/d.alexander/" target="_blank">Daniel C Alexander</a><sup>1</sup><br />
+          <sup>1</sup> University College London <br />
+		  <sup>2</sup> Microsoft Research Cambridge
+        </p>
+      </div>
+
+      <!-- Paper link -->
+      <div class="paper-link">
+        <p class="text-center">
+          <a class="btn btn-primary" href="https://arxiv.org/abs/2109.11071">Paper</a>
+          <a class="btn btn-secondary disabled" href="#" aria-disabled="true">Code (coming soon)</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="histology-tab" data-toggle="tab" href="#histology" role="tab" aria-controls="histology" aria-selected="true">HISTOLOGY EXAMPLE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="deepglobe-tab" data-toggle="tab" href="#deepglobe" role="tab" aria-controls="deepglobe" aria-selected="false">DEEPGLOBE EXAMPLE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="cityscapes-tab" data-toggle="tab" href="#cityscapes" role="tab" aria-controls="cityscapes" aria-selected="false">CITYSCAPES EXAMPLE</a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="histology" role="tabpanel" aria-labelledby="histology-tab">
+          <div class="row">
+            <div class="col embed-responsive-21by9 teaser-video">
+              <video width="100%" muted autoplay loop playsinline onmouseover="this.pause()" onmouseout="this.play();">
+                <source width="100%" src="figures/teaser_histo.mp4" type="video/mp4">
+                Sorry, your browser doesn't support embedded videos.
+              </video>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p class="text-center text-secondary neg-space"><i>Figure</i>: Semantic segmentation with learnt deformed downsampling on each slide of ultra-high resolution cancerous histology image.</p>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="deepglobe" role="tabpanel" aria-labelledby="deepglobe-tab">
+          <div class="row">
+            <div class="col embed-responsive-21by9 teaser-video">
+              <video width="100%" muted autoplay loop playsinline onmouseover="this.pause()" onmouseout="this.play();">
+                <source width="100%" src="figures/teaser_deepglobe.mp4" type="video/mp4">
+                Sorry, your browser doesn't support embedded videos.
+              </video>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p class="text-center text-secondary neg-space"><i>Figure</i>: Semantic segmentation with learnt deformed downsampling on each slide of ultra-high resolution aerial image.</p>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="cityscapes" role="tabpanel" aria-labelledby="cityscapes-tab">
+          <div class="row">
+            <div class="col embed-responsive-21by9 teaser-video">
+              <video width="100%" muted autoplay loop playsinline onmouseover="this.pause()" onmouseout="this.play();">
+                <source width="100%" src="figures/teaser_city.mp4" type="video/mp4">
+                Sorry, your browser doesn't support embedded videos.
+              </video>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p class="text-center text-secondary neg-space"><i>Figure</i>: Semantic segmentation with learnt deformed downsampling on each frame of cityscapes video demo (stuttgart_00).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="container">
+      <div class="content-block">
+        <div class="row">
+          <div class="col">
+            <p class="description">
+              Many computer vision systems require low-cost segmentation with deep learning either because of the enormous size of images or limited computational budget. Common solutions uniformly downsample the input image to meet memory constraints, assuming all pixels are equally important. However this assumption does not hold when segmentation difficulty varies spatially, and hence compromises the performance. We propose learning the spatially varying downsampling strategy jointly with segmentation offers advantages in segmenting large images with a limited computational budget. We formulate the problem as learning the sampling density distribution depends on the local context. To avoid over-sampling at trivial regions like the background, we propose an edge-based sampling target to regularise training. Our experiments show that this method consistently learns sampling locations preserving more information. On benchmarks, we demonstrate superior segmentation accuracy and cost-performance trade-off compared to both uniform downsampling and two recent downsampling methods.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="row">
+          <div class="col">
+            <h2>Motivation: optimal sampling density varies over locations</h2>
+            <hr />
+            <p class="description">
+              We demonstrate the limitation with handcrafted downsampling by simulating a set "edge-based" samplers each at different sampling density around edge, as each column. Best performed sampler for each class is highlighted. Ground truth and predictions with various sampling density for two example classes are illustrated. Sampling locations are masked on original image in red dots. Motivational experiments are performed on binary segmentation on 1/10th subset of Cityscapes with downsampled size of 64×128 given input of 1024×2048.
+            </p>
+            <p class="text-center"><img width="40%" src="figures/Motivation_visual.jpg" class="img-fluid" alt="Part-whole segmentation" /></p>
+            <p class="text-center text-secondary"><i>Figure</i>: Optimal sampling density varies over locations.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="row">
+          <div class="col">
+            <h2>Deformation module: learn non-uniform downsampling for segmentation</h2>
+            <hr />
+            <p class="description">
+              Motivated by the above finding, we propose a method for learning to downsample large images for better low-cost segmentation. We adapt sampling to the memory budget according to the difficulty of pixel-level segmentation by deformation module, a lightweight end-to-end learnable "downsampler" that can be flexibly integrated into existing semantic segmentation architectures.
+            </p>
+            <p class="text-center"><img width="50%" src="figures/deformed_seg.jpg" class="img-fluid" alt="Part-whole segmentation" /></p>
+            <p class="text-center text-secondary"><i>Figure</i>: Architecture schematic.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="row">
+          <div class="col">
+            <h2>Semantic segmentation with end-to-end learnt deformed downsampling</h2>
+            <hr />
+            <p class="description">
+              We evaluate the performance of our deformed downsampling approach on three datasets from different domains, against "uniform" downsampling and the handcrafted "edge-based" downsampling. We demonstrate our jointly trained method generalises sampling more robustly especially when label edges are less informative and consistently leads to a better cost-performance trade-off. Our method is light weighted and can be flexibly combined with the existing segmentation method without modifying architecture.
+            </p>
+            <p class="text-center"><img width="70%" src="figures/qualitative_histo_c.jpg" class="img-fluid" alt="Part-whole segmentation" /></p>
+            <p class="text-center text-secondary"><i>Figure</i>: Qualitative example on histology image. Top: input image. Middle: segmentation performed on low-resolution downsampled images. Bottom: Compare to uniform downsampling, our deformed downsampling samples more densely at difficult regions (yellow arrows) and ignore image content that does not contribute (green arrows) thereby leading to more accurate segmentation.</p>
+
+            <p class="text-center"><img width="70%" src="figures/qualitative_cityscapes_c.jpg" class="img-fluid" alt="Part-whole segmentation" /></p>
+            <p class="text-center text-secondary"><i>Figure</i>: Qualitative example on Cityscapes. Segmentation is performed on 16 times downsampled images (at each dimension). Predictions are masked over and sampling locations are shown in white dots. Yellow/ red arrows indicated regions denser/ sparser sampling helped to segment rider (red)/ sky (blue) classes, respectively.</p>
+
+            <p class="text-center"><img width="70%" src="figures/qualitative_deepglobe_c.jpg" class="img-fluid" alt="Part-whole segmentation" /></p>
+            <p class="text-center text-secondary"><i>Figure</i>: Qualitative example on DeepGlobe. Segmentation performed on 8 times downsampled image (at each dimension). Predictions are masked over and sampling locations are shown in red dots. Yellow/ green boxed region indicated regions denser/ sparser sampling helped segmenting water (blue)/ forest (purple) classes, respectively.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Citation -->
+      <div class="content-block citation">
+        <div class="row">
+          <div class="col">
+            <h2>Reference</h2>
+            <hr />
+            <p class="text-center">
+              <a class="btn btn-primary" href="https://arxiv.org/abs/2109.11071">Paper</a>
+              <a class="btn btn-secondary disabled" href="#" aria-disabled="true">Code (coming soon)</a>
+            </p>
+            <p class="description overflow-auto">@article{jin2021learning,
+    author = {Jin, Chen
+              and Tanno, Ryutaro
+              and Mertzanidou, Thomy
+              and Panagiotaki, Eleftheria
+              and Alexander, Daniel C},
+    title = {{Learning to Downsample for Segmentation of Ultra-High Resolution Images}},
+    journal = {arXiv preprint arXiv:2109.11071},
+    year  = {2021}
+}
+}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footnote">
+      <div class="container">
+        <p>For questions / comments, reach out to: <a href="chen.jin@ucl.ac.uk">Chen Jin</a></p>
+      </div>
+    </div>
+
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+            <script>
+           $('#myTab a').click(function (e) {
+             e.preventDefault()
+             $(this).tab('show')
+           })
+        </script>
+        <script>
+        $(function () {
+          $('#myTab li:last-child a').tab('show')
+        })
+      </script>
+  </body>
+</html>

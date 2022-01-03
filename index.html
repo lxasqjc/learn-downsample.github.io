@@ -105,7 +105,7 @@
           <a class="nav-link active" id="histology-tab" data-toggle="tab" href="#histology" role="tab" aria-controls="histology" aria-selected="true">HISTOLOGY EXAMPLE</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="deepglobe-tab" data-toggle="tab" href="#deepglobe" role="tab" aria-controls="deepglobe" aria-selected="false">DEEPGLOBE EXAMPLE</a>
+          <a class="nav-link" id="deepglobe-tab" data-toggle="tab" href="#deepglobe" role="tab" aria-controls="deepglobe" aria-selected="false">AERIAL EXAMPLE</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" id="cityscapes-tab" data-toggle="tab" href="#cityscapes" role="tab" aria-controls="cityscapes" aria-selected="false">CITYSCAPES EXAMPLE</a>
@@ -139,7 +139,7 @@
           </div>
           <div class="row">
             <div class="col">
-              <p class="text-center text-secondary neg-space"><i>Figure</i>: Semantic segmentation with learnt deformed downsampling on each slide of ultra-high resolution aerial image.</p>
+              <p class="text-center text-secondary neg-space"><i>Figure</i>: Semantic segmentation with learnt deformed downsampling on each slide of ultra-high resolution aerial image from <a href="http://deepglobe.org/" target="_blank">DeepGlobe</a> dataset.</p>
             </div>
           </div>
         </div>
@@ -154,7 +154,7 @@
           </div>
           <div class="row">
             <div class="col">
-              <p class="text-center text-secondary neg-space"><i>Figure</i>: Semantic segmentation with learnt deformed downsampling on each frame of cityscapes video demo (stuttgart_00).</p>
+              <p class="text-center text-secondary neg-space"><i>Figure</i>: Semantic segmentation with learnt deformed downsampling on each frame of <a href="https://www.cityscapes-dataset.com/" target="_blank">Cityscapes</a> video demo (stuttgart_00).</p>
             </div>
           </div>
         </div>
@@ -180,7 +180,7 @@
             <h2>Motivation: optimal sampling density varies over locations</h2>
             <hr />
             <p class="description">
-              We demonstrate the limitation with handcrafted downsampling by simulating a set "edge-based" samplers each at different sampling density around edge, as each column. Best performed sampler for each class is highlighted. Ground truth and predictions with various sampling density for two example classes are illustrated. Sampling locations are masked on original image in red dots. Motivational experiments are performed on binary segmentation on 1/10th subset of Cityscapes with downsampled size of 64×128 given input of 1024×2048.
+              We demonstrate the limitation with handcrafted downsampling by simulating a set of samplers each with different sampling density distribution as each column. Ground truth and predictions with each sampler for two example classes are illustrated and the best-performed sampler for each class is highlighted with a coloured border. Sampling locations are masked on the original image in red dots. Motivational experiments are performed on Cityscapes with a downsampled size of 64×128 given input of 1024×2048.
             </p>
             <p class="text-center"><img width="40%" src="figures/Motivation_visual.jpg" class="img-fluid" alt="Part-whole segmentation" /></p>
             <p class="text-center text-secondary"><i>Figure</i>: Optimal sampling density varies over locations.</p>
@@ -208,16 +208,16 @@
             <h2>Semantic segmentation with end-to-end learnt deformed downsampling</h2>
             <hr />
             <p class="description">
-              We evaluate the performance of our deformed downsampling approach on three datasets from different domains, against "uniform" downsampling and the handcrafted "edge-based" downsampling. We demonstrate our jointly trained method generalises sampling more robustly especially when label edges are less informative and consistently leads to a better cost-performance trade-off. Our method is light weighted and can be flexibly combined with the existing segmentation method without modifying architecture.
+              We evaluate the performance of our deformed downsampling approach on three datasets from different domains, against "uniform" downsampling and the handcrafted "edge-based" downsampling. We demonstrate our jointly trained method generalises sampling better especially when label edges are less informative and consistently lead to a better cost-performance trade-off.
             </p>
             <p class="text-center"><img width="70%" src="figures/qualitative_histo_c.jpg" class="img-fluid" alt="Part-whole segmentation" /></p>
-            <p class="text-center text-secondary"><i>Figure</i>: Qualitative example on histology image. Top: input image. Middle: segmentation performed on low-resolution downsampled images. Bottom: Compare to uniform downsampling, our deformed downsampling samples more densely at difficult regions (yellow arrows) and ignore image content that does not contribute (green arrows) thereby leading to more accurate segmentation.</p>
+            <p class="text-center text-secondary"><i>Figure</i>: Qualitative example on histology image. Top: our learnt downsampling (blue dots on the images) adapts sampling density according to the semantic importance at each location. Middle: ground truth and segmentations performed on differently downsampled low-resolution images. Bottom: Compare to uniform downsampling, our deformed downsampling samples more densely at difficult regions (yellow arrows) and ignore image content that does not contribute (green arrows) thereby leading to more accurate segmentation.</p>
 
             <p class="text-center"><img width="70%" src="figures/qualitative_cityscapes_c.jpg" class="img-fluid" alt="Part-whole segmentation" /></p>
-            <p class="text-center text-secondary"><i>Figure</i>: Qualitative example on Cityscapes. Segmentation is performed on 16 times downsampled images (at each dimension). Predictions are masked over and sampling locations are shown in white dots. Yellow/ red arrows indicated regions denser/ sparser sampling helped to segment rider (red)/ sky (blue) classes, respectively.</p>
+            <p class="text-center text-secondary"><i>Figure</i>: Qualitative example on <a href="https://www.cityscapes-dataset.com/" target="_blank">Cityscapes</a>. Segmentation is performed on 16 times downsampled images (at each dimension). Predictions are masked over and sampling locations are shown in white dots. Yellow/ red arrows indicated regions with denser/ sparser sampling helped to segment rider (red)/ sky (blue) classes, respectively.</p>
 
             <p class="text-center"><img width="70%" src="figures/qualitative_deepglobe_c.jpg" class="img-fluid" alt="Part-whole segmentation" /></p>
-            <p class="text-center text-secondary"><i>Figure</i>: Qualitative example on DeepGlobe. Segmentation performed on 8 times downsampled image (at each dimension). Predictions are masked over and sampling locations are shown in red dots. Yellow/ green boxed region indicated regions denser/ sparser sampling helped segmenting water (blue)/ forest (purple) classes, respectively.</p>
+            <p class="text-center text-secondary"><i>Figure</i>: Qualitative example on <a href="http://deepglobe.org/" target="_blank">DeepGlobe</a>. Segmentation performed on 8 times downsampled images (at each dimension). Predictions are masked over and sampling locations are shown in red dots. Yellow/ green boxed region indicated regions with denser/ sparser sampling helped segmenting water (blue)/ forest (purple) classes, respectively.</p>
           </div>
         </div>
       </div>
